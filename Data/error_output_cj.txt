@@ -1,34 +1,21 @@
 clang++ -g -std=c++14 ./Code/lib_job_system/samplecode/*.cpp -o automated
+./Code/lib_job_system/samplecode/animal.cpp:1:10: fatal error: 'string' file not found
+    1 | #include <string>
+      |          ^~~~~~~~
+1 error generated.
 In file included from ./Code/lib_job_system/samplecode/cat.cpp:1:
-./Code/lib_job_system/samplecode/cat.h:7:10: error: extra qualification on member 'Cat'
-    Cat::Cat(const std::string &name, int age, const std::string &breed);
-    ~~~~~^
-./Code/lib_job_system/samplecode/cat.cpp:18:67: error: expected '}'
-    std::cout << "This is the foo function for Cat." << std::endl;
-                                                                  ^
-./Code/lib_job_system/samplecode/cat.cpp:17:1: note: to match this '{'
-{
-^
-2 errors generated.
+./Code/lib_job_system/samplecode/cat.h:1:10: fatal error: 'string' file not found
+    1 | #include <string>
+      |          ^~~~~~~~
+1 error generated.
 ./Code/lib_job_system/samplecode/syntaxerror.cpp:1:19: error: expected '>'
-#include <iostream
-                  ^
+    1 | #include <iostream
+      |                   ^
 ./Code/lib_job_system/samplecode/syntaxerror.cpp:1:10: note: to match this '<'
-#include <iostream
-         ^
-./Code/lib_job_system/samplecode/syntaxerror.cpp:2:10: warning: non-portable path to file '<string>'; specified path differs in case from file name on disk [-Wnonportable-include-path]
-#include <String>
-         ^~~~~~~~
-         <string>
-./Code/lib_job_system/samplecode/syntaxerror.cpp:13:17: error: expected member name or ';' after declaration specifiers
-    std::string = "Hello World!\n";
-    ~~~~~~~~~~~ ^
-./Code/lib_job_system/samplecode/syntaxerror.cpp:14:14: error: expected ';' at end of declaration list
-    int i = 0
-             ^
-./Code/lib_job_system/samplecode/syntaxerror.cpp:16:2: error: expected ';' after class
-}
- ^
- ;
-1 warning and 4 errors generated.
+    1 | #include <iostream
+      |          ^
+./Code/lib_job_system/samplecode/syntaxerror.cpp:2:10: fatal error: 'String' file not found
+    2 | #include <String>
+      |          ^~~~~~~~
+2 errors generated.
 make: *** [automated] Error 1
