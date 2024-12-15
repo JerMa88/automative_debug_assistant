@@ -1,0 +1,45 @@
+My JobSystem is a custom build concurrency program that will try compiling a program, parse the error and eventually output the error message thown by the compiler. The error message outputs each individual errors and warnings, containing the file and the line and column in the file which the error occured in, the error/warning message and eventually the snippet of code the error occured in. I want you to examine each error, and give me a debug solution for each every single error and warning. First, give an explanation of why the file did not compile, and second give the fixed code in the context of the error. For each error/warning, I want you to ouput why the compiler error/warning exist, what is the fix, and finally the code snippet that corrects the code where the error is at. 
+
+Here is the error message:
+Compiler error #1 in file ./Code/lib_job_system/samplecode/cat.h at line 7 and column 10. Compiler message prints:  error: extra qualification on member 'Cat'The context of the code is: class Cat : Animal
+{
+    Cat::Cat(const std::string &name, int age, const std::string &breed);
+
+    std::string breed; 
+
+
+Compiler error #2 in file ./Code/lib_job_system/samplecode/cat.cpp at line 18 and column 67. Compiler message prints:  error: expected '}'The context of the code is: void Cat::foo()
+{
+    std::cout << "This is the foo function for Cat." << std::endl;
+
+
+Compiler error #3 in file ./Code/lib_job_system/samplecode/syntaxerror.cpp at line 1 and column 19. Compiler message prints:  error: expected '>'The context of the code is: #include <iostream
+#include <String>
+
+
+
+Compiler warning #4 in file ./Code/lib_job_system/samplecode/syntaxerror.cpp at line 2 and column 10. Compiler message prints:  warning: non-portable path to file '<string>'; specified path differs in case from file name on disk [-Wnonportable-include-path]The context of the code is: #include <iostream
+#include <String>
+
+#include "animal.h"
+
+
+Compiler error #5 in file ./Code/lib_job_system/samplecode/syntaxerror.cpp at line 13 and column 17. Compiler message prints:  error: expected member name or ';' after declaration specifiersThe context of the code is:     void linkerError();
+
+    std::string = "Hello World!\n";
+    int i = 0
+    return string;
+
+
+Compiler error #6 in file ./Code/lib_job_system/samplecode/syntaxerror.cpp at line 14 and column 14. Compiler message prints:  error: expected ';' at end of declaration listThe context of the code is: 
+    std::string = "Hello World!\n";
+    int i = 0
+    return string;
+}
+
+
+Compiler error #7 in file ./Code/lib_job_system/samplecode/syntaxerror.cpp at line 16 and column 2. Compiler message prints:  error: expected ';' after classThe context of the code is:     int i = 0
+    return string;
+}
+
+

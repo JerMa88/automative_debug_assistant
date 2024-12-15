@@ -1,0 +1,70 @@
+digraph G {
+    Start [shape=Mdiamond]
+
+    node [shape=oval]
+    StartorGetJobSystem
+    RegisterJobType
+    CreateJob
+    Start->StartorGetJobSystem
+    StartorGetJobSystem->CreateWorkerThread
+    CreateWorkerThread->CreateWorkerThread
+    CreateWorkerThread->CreateWorkerThread
+    CreateWorkerThread->CreateWorkerThread
+    CreateWorkerThread->RegisterJobType 
+
+    node [shape=box,style=filled]
+    RegisterJobType->"CompileJob\nParseJob\nOutputJob\nCustomJob"[color = red]
+    RegisterJobType->ListJobs
+    ListJobs->CreateJob
+
+    node [style = unfilled]
+
+    node [shape=circle];
+    CompileJob
+    ParseJob
+    OutputJob
+    CustomJob
+
+    subgraph cluster_0 {
+        label="for loop"
+        style=filled
+        color=lightgrey
+        node [shape=box]
+        "condition: iterate 10 times"
+        node [style=filled,color=white]
+
+        CustomJob
+    }
+
+    CreateJob->CompileJob
+    CreateJob->ParseJob
+    CreateJob->OutputJob
+    CreateJob->CustomJob[label = "10"]
+
+    CompileJob->ParseJob[style=bold,label="Link"]
+    ParseJob->OutputJob[style=bold,label="Link"]
+    
+    subgraph cluster_1 {
+        label="UI while loop->";
+        
+        style=filled
+        color=lightgrey
+        node [shape=box]
+        "condition: running != 0"
+        "if(command == \"stop\")"
+        "if(command == \"destroy\")"
+        "if(command == \"status\")"
+        "if(command == \"finish\")"
+    }
+    CompileJob -> "condition: running != 0"
+    ParseJob -> "condition: running != 0"
+    OutputJob -> "condition: running != 0"
+
+    node [shape=oval]
+    "if(command == \"stop\")" -> End
+    "if(command == \"destroy\")" -> DestroyJob-> End
+    "if(command == \"status\")" -> GetJobStatus-> End
+    "if(command == \"finish\")" -> FinishCompletedJob->End;
+
+    End [shape=Msquare]
+}

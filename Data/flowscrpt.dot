@@ -1,0 +1,14 @@
+
+StartorGetJobSystem->
+ CreateWorkerThread->
+ CreateWorkerThread->
+ CreateWorkerThread->
+
+RegisterJobType->"CompileJob\nParseJob\nOutputJob\nCustomJob\nLLMJob\n"
+ ListJobs->
+ CompileJob->ParseJob[style=bold,label="Link"]
+ ParseJob->OutputJob[style=bold,label="Link"]
+ CreateJob->CompileJob
+ CreateJob->ParseJob
+ CreateJob->OutputJob
+ label="UI while loop->"

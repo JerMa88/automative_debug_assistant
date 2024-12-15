@@ -1,0 +1,43 @@
+Write a dot file for a flowscript language implementation. The dot file should be parsed by my program, jobsystem, to control the rest of the program with the following elements in each line:
+1. Job System Setup: printing out function StartorGetJobSystem, CreateWorkerThread (at least 2 times for multithreading), with a "->" following the function name indicating execution
+2. Jobs Setup: 1) RegisterJobType following a "->" and then the types of jobs: CompileJob, ParseJob, OutputJob, CustomJob, LLMJob, each followed by "\n" and surround the list in qutation as one string
+2) ListJobs followed by a "->" to display the jobs just registered 
+3) CreateJob followed by a "->" and a job in the registred job types. One job a line until the every job in the list is created. 
+4) CompileJob followed by a "->" and ParseJob and [style=bold,label="Link"] to implement dependency; 
+ParseJob followed by a "->" and OutputJob and [style=bold,label="Link"] to implement dependency. 
+3. UI: label="UI while loop->" to invoke the user interface to control job system. 
+Note: Make sure that each line has only one function, and there is always a "->" after the function name.
+To make sure parse can read your generated file, ensure proper styling as described above by the order the rules mentioned. Here are some example for syntax: 
+Generic syntactical format: 
+```dot
+FunctionOne->
+FunctionTwo->
+FunctionJob->ExampleJob
+ExampleJob->AnotherExampleJob[style=bold,label="Link"]
+label="UI while loop->"
+```
+For JobSystem creation: 
+```dot
+StartorGetJobSystem->
+CreateWorkerThread->
+CreateWorkerThread->
+CreateWorkerThread-> 
+```
+For creating jobs:
+```dot
+RegisterJobType->"CompileJob\nParseJob\nOutputJob\nCustomJob\nLLMJob\n"
+ListJobs->
+CreateJob->CompileJob
+CreateJob->ParseJob
+CreateJob->OutputJob 
+```
+For linking jobs: 
+```dot
+CompileJob->ParseJob[style=bold,label="Link"]
+ParseJob->OutputJob[style=bold,label="Link"] 
+```
+For initiating UI:
+```dot
+label="UI while loop->" 
+```
+Now, generate the dot file for my program to parse. Remember to follow all above instructions&

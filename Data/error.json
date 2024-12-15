@@ -1,0 +1,60 @@
+{
+    "return code": 512,
+    "output": [
+        [
+            {
+                "file": "./Code/lib_job_system/samplecode/cat.h",
+                "line": "7",
+                "column": "10",
+                "error": " error: extra qualification on member 'Cat'",
+                "codeSnippet": "class Cat : Animal\n{\n    Cat::Cat(const std::string &name, int age, const std::string &breed);\n\n    std::string breed; \n"
+            }
+        ],
+        [
+            {
+                "file": "./Code/lib_job_system/samplecode/cat.cpp",
+                "line": "18",
+                "column": "67",
+                "error": " error: expected '}'",
+                "codeSnippet": "void Cat::foo()\n{\n    std::cout << \"This is the foo function for Cat.\" << std::endl;\n"
+            }
+        ],
+        [
+            {
+                "file": "./Code/lib_job_system/samplecode/syntaxerror.cpp",
+                "line": "1",
+                "column": "19",
+                "error": " error: expected '>'",
+                "codeSnippet": "#include <iostream\n#include <String>\n\n"
+            },
+            {
+                "file": "./Code/lib_job_system/samplecode/syntaxerror.cpp",
+                "line": "2",
+                "column": "10",
+                "warning": " warning: non-portable path to file '<string>'; specified path differs in case from file name on disk [-Wnonportable-include-path]",
+                "codeSnippet": "#include <iostream\n#include <String>\n\n#include \"animal.h\"\n"
+            },
+            {
+                "file": "./Code/lib_job_system/samplecode/syntaxerror.cpp",
+                "line": "13",
+                "column": "17",
+                "error": " error: expected member name or ';' after declaration specifiers",
+                "codeSnippet": "    void linkerError();\n\n    std::string = \"Hello World!\\n\";\n    int i = 0\n    return string;\n"
+            },
+            {
+                "file": "./Code/lib_job_system/samplecode/syntaxerror.cpp",
+                "line": "14",
+                "column": "14",
+                "error": " error: expected ';' at end of declaration list",
+                "codeSnippet": "\n    std::string = \"Hello World!\\n\";\n    int i = 0\n    return string;\n}\n"
+            },
+            {
+                "file": "./Code/lib_job_system/samplecode/syntaxerror.cpp",
+                "line": "16",
+                "column": "2",
+                "error": " error: expected ';' after class",
+                "codeSnippet": "    int i = 0\n    return string;\n}\n"
+            }
+        ]
+    ]
+}
