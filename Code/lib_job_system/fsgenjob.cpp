@@ -47,10 +47,9 @@ void FSGenJob::execute()
         std::cerr << "Error parsing JSON." << std::endl;
     }
 
-    const rapidjson::Value& choices = document["choices"];
-    if (choices.IsArray() && choices.Size() > 0) {
-        const rapidjson::Value& choice = choices[0];
-        const char* text = choice["text"].GetString();
+    const rapidjson::Value& message = document["message"];
+    if (message.IsObject()) {
+        const char* text = message["content"].GetString();
 
         // Open a file for writing
         std::ofstream outFile("./Data/flowscrpt.dot");
@@ -76,7 +75,7 @@ void FSGenJob::execute()
 
         std::cout << "Text written to ./Data/flowscrpt.dot successfully." << std::endl;
     } else {
-        std::cerr << "No choices found in JSON." << std::endl;
+        std::cerr << "No message found in JSON." << std::endl;
     }
 
 

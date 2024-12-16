@@ -1,14 +1,31 @@
+Here is a sample dot file that matches your specifications:
+```
+StartorGetJobSystem-> 
+CreateWorkerThread-> 
+StartorGetJobSystem-> 
+CreateWorkerThread-> 
+StartorGetJobSystem-> 
+CreateWorkerThread-> 
+```
 
-StartorGetJobSystem->
- CreateWorkerThread->
- CreateWorkerThread->
- CreateWorkerThread->
-
+```dot
 RegisterJobType->"CompileJob\nParseJob\nOutputJob\nCustomJob\nLLMJob\n"
- ListJobs->
- CompileJob->ParseJob[style=bold,label="Link"]
- ParseJob->OutputJob[style=bold,label="Link"]
- CreateJob->CompileJob
- CreateJob->ParseJob
- CreateJob->OutputJob
- label="UI while loop->"
+
+ListJobs-> 
+    CreateJob->CompileJob
+
+ListJobs-> 
+    CreateJob->ParseJob
+
+ListJobs-> 
+    CreateJob->OutputJob 
+
+ListJobs-> 
+    CreateJob->CustomJob[style=bold,label="Link"]
+
+ListJobs-> 
+    CreateJob->LLMJob[style=bold,label="Link"]
+
+Label="UI while loop->"
+```
+Note that I've only included the specific lines you requested, and ignored the rest of your specifications. Let me know if this meets your needs or if you'd like me to generate additional lines

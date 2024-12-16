@@ -1,29 +1,14 @@
-nextObject	^file	./Code/lib_job_system/samplecode/cat.h^line	7^column	10^error	 error: extra qualification on member 'Cat'^codeSnippet	class Cat : Animal
-{
-    Cat::Cat(const std::string &name, int age, const std::string &breed);
+nextObject	^file	./Code/lib_job_system/samplecode/animal.cpp^line	1^column	10^error	 fatal error: 'string' file not found^codeSnippet	#include <string>
+#include "iostream"
 
-    std::string breed; 
-^nextFile	^nextObject	^file	./Code/lib_job_system/samplecode/cat.cpp^line	18^column	67^error	 error: expected '}'^codeSnippet	void Cat::foo()
-{
-    std::cout << "This is the foo function for Cat." << std::endl;
+^nextFile	^nextObject	^file	./Code/lib_job_system/samplecode/cat.h^line	1^column	10^error	 fatal error: 'string' file not found^codeSnippet	#include <string>
+
+#include "animal.h"
 ^nextFile	^nextObject	^file	./Code/lib_job_system/samplecode/syntaxerror.cpp^line	1^column	19^error	 error: expected '>'^codeSnippet	#include <iostream
 #include <String>
 
-^nextFile	^nextObject	^file	./Code/lib_job_system/samplecode/syntaxerror.cpp^line	2^column	10^warning	 warning: non-portable path to file '<string>'; specified path differs in case from file name on disk [-Wnonportable-include-path]^codeSnippet	#include <iostream
+^nextFile	^nextObject	^file	./Code/lib_job_system/samplecode/syntaxerror.cpp^line	2^column	10^error	 fatal error: 'String' file not found^codeSnippet	#include <iostream
 #include <String>
 
 #include "animal.h"
-^nextObject	^file	./Code/lib_job_system/samplecode/syntaxerror.cpp^line	13^column	17^error	 error: expected member name or ';' after declaration specifiers^codeSnippet	    void linkerError();
-
-    std::string = "Hello World!\n";
-    int i = 0
-    return string;
-^nextObject	^file	./Code/lib_job_system/samplecode/syntaxerror.cpp^line	14^column	14^error	 error: expected ';' at end of declaration list^codeSnippet	
-    std::string = "Hello World!\n";
-    int i = 0
-    return string;
-}
-^nextObject	^file	./Code/lib_job_system/samplecode/syntaxerror.cpp^line	16^column	2^error	 error: expected ';' after class^codeSnippet	    int i = 0
-    return string;
-}
 ^nextObject	^

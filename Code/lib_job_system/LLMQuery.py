@@ -1,4 +1,6 @@
-import openai
+import ollama
+from ollama import chat
+from ollama import ChatResponse
 import json
 import sys
 
@@ -16,35 +18,46 @@ print("\nThis is INFILE: ", inFilePath, "\n")
 print("\nThis is OUTFILE: ", outFilePath, "\n")
 print("\nThis is PROMPT: ", prompt, "\n")
 
-openai.api_base = "http://localhost:4891/v1"
-#openai.api_base = "https://api.openai.com/v1"
+model = 'llama3.2:1b'
 
-openai.api_key = "not needed for a local LLM"
-
-# Set up the prompt and other parameters for the API request
-# prompt = "Related to your given file path, debug my code."
-
-# model = "gpt-3.5-turbo"
-# model = "mpt-7b-chat"
-model = "mistral-7b-openorca.Q4_0.gguf"
-# model = "gpt4all-falcon-q4_0.gguf"
+try:
+  ollama.chat(model)
+except ollama.ResponseError as e:
+  print('Error:', e.error)
+  if e.status_code == 404:
+    ollama.pull(model)
 
 # Make the API request
-response = openai.Completion.create(
-    model=model,
-    prompt=prompt,
-    max_tokens=5000,
-    temperature=0.28,
-    top_p=0.95,
-    n=1,
-    echo=True,
-    stream=False
-)
+# response = openai.Completion.create(
+#     model=model,
+#     prompt=prompt,
+#     max_tokens=5000,
+#     temperature=0.28,
+#     top_p=0.95,
+#     n=1,
+#     echo=True,
+#     stream=False
+# ) # Deprecated
+
+response = chat(model=model, messages=[
+  {
+    'role': 'user',
+    'content': prompt,
+    "options": {
+        "temperature": 0
+    },
+    "stream": False,
+  },
+])
+# print(response['message']['content']) # or access fields directly from the response object response.message.content
+
+response = json.loads(response.json())
 
 # Print the generated completion
-print("\nThis is responce: \'",response, "\'")
+print("\nResponse: ",response)
+print(type(response))
 
-# json_str = json.dumps(response, indent=4)
+json_str = json.dumps(response, indent=4)
 
 with open(outFilePath, "w") as outfile:
     json.dump(response, outfile)
